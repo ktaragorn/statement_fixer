@@ -8,6 +8,10 @@ targets:
   statement_fixer:
     main: src/statement_fixer.cr
 
+dependencies:
+  optarg:
+    github: mosop/optarg
+
 crystal: 0.23.1
 
 license: MIT
