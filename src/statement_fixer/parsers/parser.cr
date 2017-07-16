@@ -30,11 +30,11 @@ class Parser
     raise NotImplementedError, "Implement this method on individual parsers"
   end
 
-  def _write_to_statement(date = nil, description = nil, income = nil, expense = nil)
+  def _write_to_statement(date = nil, description = nil, income = nil, expense = nil, tag = nil)
     if @statement_record
       @statement << @statement_record
     elsif date
-      @statement << StatementRecord.new(date, description, income, expense)
+      @statement << StatementRecord.new(date, description, income, expense, tag)
     end
     @statement_record = nil : StatementRecord | Nil
   end

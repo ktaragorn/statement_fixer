@@ -1,7 +1,7 @@
 class StatementRecord
-  property date, description, income, expense
+  property date, description, income, expense, tag
 
-  def initialize(date = nil, description = nil, @income : Float32 | Nil = nil, @expense : Float32 | Nil = nil)
+  def initialize(date = nil, description = nil, @income : Float32 | Nil = nil, @expense : Float32 | Nil = nil, tag : String | Nil = nil)
     self.date = date
     self.description = description
   end
@@ -18,7 +18,7 @@ class StatementRecord
   end
 
   def csv_headers
-    %w{date description income expense}
+    %w{date description income expense tag}
   end
 
   def csv_dump(headers)
@@ -30,6 +30,6 @@ class StatementRecord
       raise "Invalid date #{date}"
     end
 
-    [date, description, income, expense]
+    [date, description, income, expense, tag]
   end
 end
