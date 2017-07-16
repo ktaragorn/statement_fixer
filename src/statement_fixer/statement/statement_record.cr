@@ -13,15 +13,15 @@ class StatementRecord
   end
 
   def description=(description)
-    @description = description.strip.gsub(/\s+/, "\s")
+    @description = description.strip.gsub(/\s+/, " ")
   end
 
   def income=(income)
-    @income = income.to_f
+    @income = income.to_f rescue 0.0 # :( ugly but necessary to handle case where the value is ""
   end
 
   def expense=(expense)
-    @expense = expense.to_f
+    @expense = expense.to_f rescue 0.0 # :( ugly but necessary to handle case where the value is ""
   end
 
   def csv_meta
@@ -36,10 +36,10 @@ class StatementRecord
       raise "Empty record #{self}"
     end
 
-    unless date.is_a? Date
-      raise "Invalid date #{date}"
+    unless (d = date).is_a? Time
+      raise "Invalid date #{d}"
     end
 
-    [date, description, income, expense, tag]
+    [d.to_s("%Y-%m-%d"), description, income, expense, tag]
   end
 end

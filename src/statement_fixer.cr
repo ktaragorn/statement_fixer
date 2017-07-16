@@ -28,4 +28,5 @@ module StatementFixer
   end
 
   parser = ParserRegister.types[parser_key].new(args.csv_file)
+  parser.parse_into("test.csv")
 end

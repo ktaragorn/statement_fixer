@@ -11,13 +11,14 @@ class Statement
 
   def export_csv(file)
     file = file + @suffix + ".csv"
-    CSV.open(file, "wb") do |csv|
+    csv = CSV.build do |csv|
       headers = @records.first.csv_headers
-      csv << headers
+      csv.row headers
       @records.each do |record|
-        csv << record.csv_dump(headers)
+        csv.row record.csv_dump(headers)
       end
     end
+    File.write(file, csv)
     file
   end
 end
