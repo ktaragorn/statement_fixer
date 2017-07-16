@@ -3,7 +3,7 @@ require "csv"
 
 class CSVParser < Parser
   def _parse_file(input)
-    CSV.foreach(input) do |line|
+    CSV.each_row(input) do |line|
       _parse_line line
     end
   end

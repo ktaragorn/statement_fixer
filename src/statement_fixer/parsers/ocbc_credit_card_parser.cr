@@ -13,9 +13,9 @@ class OCBCCreditCardParser < CSVParser
 
   def _parse_line(line)
     # note there could be multiple Supplementary cards
-    if line[0].start_with? "Main"
+    if line[0].starts_with? "Main"
       @statement.suffix = "_main"
-    elsif line[0].start_with? "Supplementary"
+    elsif line[0].starts_with? "Supplementary"
       _new_statement "_supp"
     end
     return unless (Date.parse(line[0]) rescue false)
