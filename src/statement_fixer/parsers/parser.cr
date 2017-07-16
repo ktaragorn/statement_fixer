@@ -27,7 +27,7 @@ class Parser
   end
 
   def _parse_file(input)
-    raise NotImplementedError, "Implement this method on individual parsers"
+    raise NotImplementedError.new("Implement this method on individual parsers")
   end
 
   def _write_to_statement(date = nil, description = nil, income = nil, expense = nil, tag = nil)

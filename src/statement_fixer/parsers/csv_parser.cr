@@ -9,6 +9,6 @@ class CSVParser < Parser
   end
 
   def _parse_line(line)
-    raise NotImplementedError, "Implement this method on individual parsers"
+    raise NotImplementedError.new("Implement this method on individual parsers")
   end
 end
