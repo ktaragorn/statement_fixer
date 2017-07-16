@@ -3,5 +3,5 @@ require "./statement_fixer/statement/*"
 require "./statement_fixer/parsers/*"
 
 module StatementFixer
-  puts ARGV
+  puts Parser.types
 end

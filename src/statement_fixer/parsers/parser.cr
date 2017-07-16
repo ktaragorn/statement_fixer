@@ -3,14 +3,13 @@ require "./../statement/statement_record"
 
 class Parser
   getter statements, statement
-  @@types = {} of String => Parser.class
 
   def self.register(type, klass)
-    @@types[type] = klass
+    ParserRegister.register(type, klass)
   end
 
   def self.types
-    @@types
+    ParserRegister.types
   end
 
   def initialize(input)
