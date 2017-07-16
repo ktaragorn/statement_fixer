@@ -11,7 +11,8 @@ class POSBAccountParser < CSVParser
     return unless date
     income = line[3]
     expense = line[2]
-    description = "[#{line[1]}] #{line[4]}\n#{line[5]} (#{line[6]})"
+    description = "[#{line[1]}] #{line[4]} #{line[5]}"
+    description += " (#{line[6]})" unless line[6].blank?
     _write_to_statement date, description, income, expense
   end
 end
