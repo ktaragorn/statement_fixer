@@ -1,5 +1,5 @@
-require_relative "../statement/statement"
-require_relative "../statement/statement_record"
+require "./../statement/statement"
+require "./../statement/statement_record"
 
 class Parser
   attr_reader :statements, :statement
@@ -16,7 +16,7 @@ class Parser
   def initialize(input)
     @statements = [Statement.new]
     @statement = @statements.first
-    @statement_record = nil
+    @statement_record = nil : StatementRecord | Nil
     _parse_file input
     _finalize_statement
   end
@@ -37,7 +37,7 @@ class Parser
     elsif date
       @statement << StatementRecord.new(date, description, income, expense)
     end
-    @statement_record = nil
+    @statement_record = nil : StatementRecord | Nil
   end
 
   def _new_statement(suffix = "")

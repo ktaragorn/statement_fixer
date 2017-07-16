@@ -1,4 +1,4 @@
-require_relative "csv_parser"
+require "./csv_parser"
 
 class POSBAccountParser < CSVParser
   register "posb_account", self
