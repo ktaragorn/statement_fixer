@@ -2,8 +2,8 @@ require "./../statement/statement"
 require "./../statement/statement_record"
 
 class Parser
-  attr_reader :statements, :statement
-  @@types = {} of String => Parser
+  getter statements, statement
+  @@types = {} of String => Parser.class
 
   def self.register(type, klass)
     @@types[type] = klass

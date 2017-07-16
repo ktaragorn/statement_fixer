@@ -1,11 +1,9 @@
 class StatementRecord
-  attr_accessor :date, :description, :income, :expense
+  property date, description, income, expense
 
-  def initialize(date = nil, description = nil, income = nil, expense = nil)
+  def initialize(date = nil, description = nil, @income : Float32 | Nil = nil, @expense : Float32 | Nil = nil)
     self.date = date
     self.description = description
-    @income = income
-    @expense = expense
   end
 
   def date=(date)

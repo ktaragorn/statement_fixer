@@ -1,4 +1,4 @@
-require_relative "csv_parser"
+require "./csv_parser"
 
 class DBSCreditCardParser < CSVParser
   register "dbs_credit_card", self
