@@ -1,0 +1,13 @@
+name: statement_fixer
+version: 0.1.0
+
+authors:
+  - Karthik T <karthikt.holmes+github@gmail.com>
+
+targets:
+  statement_fixer:
+    main: src/statement_fixer.cr
+
+crystal: 0.23.1
+
+license: MIT
