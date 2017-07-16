@@ -1,7 +1,7 @@
 require "./csv_parser"
 
 class OCBCCreditCardParser < CSVParser
-  register "ocbc_credit_cards", self
+  register "ocbc_credit_card", self
 
   # Main Credit CardOCBC 365 Credit Card 4524-1920-0283-6744
   # Transaction date  Description Withdrawals (SGD) Deposits (SGD)

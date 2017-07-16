@@ -14,4 +14,13 @@ module StatementFixer
   puts args.csv_file
   puts args.bank
   puts args.type
+
+  unless File.exists? args.csv_file
+    raise "Specified file does not exist - #{args.csv_file}"
+  end
+
+  parser_key = "#{args.bank}_#{args.type}"
+  unless ParserRegister.types.has_key? parser_key
+    raise "Invalid/unsupported type type -  #{parser_key}"
+  end
 end
