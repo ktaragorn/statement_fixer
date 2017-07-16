@@ -18,7 +18,8 @@ class OCBCCreditCardParser < CSVParser
     elsif line[0].starts_with? "Supplementary"
       _new_statement "_supp"
     end
-    return unless (Date.parse(line[0]) rescue false)
-    _write_to_statement line[0], line[1], line[2], line[3]
+    date = Time.parse(line[0], "%d/%m/%Y") rescue nil
+    return unless date
+    _write_to_statement date, line[1], line[2], line[3]
   end
 end

@@ -26,4 +26,6 @@ module StatementFixer
   unless ParserRegister.types.has_key? parser_key
     raise "Invalid/unsupported type type -  #{parser_key}"
   end
+
+  parser = ParserRegister.types[parser_key].new(args.csv_file)
 end

@@ -1,10 +1,11 @@
 class Statement
-  def initialize(suffix = "")
+  property suffix
+
+  def initialize(@suffix = "")
     @records = [] of StatementRecord
-    @suffix = suffix
   end
 
-  def <<(record)
+  def <<(record : StatementRecord)
     @records << record
   end
 

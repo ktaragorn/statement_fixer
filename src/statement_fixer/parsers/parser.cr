@@ -3,6 +3,7 @@ require "./../statement/statement_record"
 
 class Parser
   getter statements, statement
+  @statement_record : StatementRecord | Nil
 
   def self.register(type, klass)
     ParserRegister.register(type, klass)
@@ -15,7 +16,7 @@ class Parser
   def initialize(input)
     @statements = [Statement.new]
     @statement = @statements.first
-    @statement_record = nil : StatementRecord | Nil
+    @statement_record = nil
     _parse_file input
     _finalize_statement
   end
@@ -30,13 +31,13 @@ class Parser
     raise NotImplementedError.new("Implement this method on individual parsers")
   end
 
-  def _write_to_statement(date = nil, description = nil, income = nil, expense = nil, tag = nil)
-    if @statement_record
-      @statement << @statement_record
+  def _write_to_statement(date : Time | Nil = nil, description = nil, income = nil, expense = nil, tag = nil)
+    if s = @statement_record # only way to get this to work since statement_record can be nil
+      @statement << s
     elsif date
       @statement << StatementRecord.new(date, description, income, expense, tag)
     end
-    @statement_record = nil : StatementRecord | Nil
+    @statement_record = nil
   end
 
   def _new_statement(suffix = "")
