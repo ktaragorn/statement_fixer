@@ -14,12 +14,12 @@ class OCBCCreditCardParser < CSVParser
   def _parse_line(line)
     # note there could be multiple Supplementary cards
     if line[0].starts_with? "Main"
-      @tag = "main"
+      @tag = ""
     elsif line[0].starts_with? "Supplementary"
       @tag = "supplementary"
     end
     date = Time.parse(line[0], "%d/%m/%Y") rescue nil
     return unless date
-    _write_to_statement date, line[1], line[2], line[3], @tag
+    _write_to_statement date, line[1], line[3], line[2], @tag
   end
 end
