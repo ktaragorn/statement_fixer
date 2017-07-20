@@ -31,7 +31,7 @@ class Parser
     raise NotImplementedError.new("Implement this method on individual parsers")
   end
 
-  def _write_to_statement(date : Time | Nil = nil, description = nil, income = nil, expense = nil, tag = nil)
+  def _write_to_statement(date : Time | Nil = nil, description = nil, income : String | Nil = nil, expense : String | Nil = nil, tag = nil)
     if s = @statement_record # only way to get this to work since statement_record can be nil
       @statement << s
     elsif date

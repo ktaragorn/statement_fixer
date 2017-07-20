@@ -6,7 +6,7 @@ class StatementRecord
   @expense : Float64 | Nil
   @tag : String | Nil
 
-  def initialize(@date = nil, description = nil, income = nil, expense = nil, @tag : String | Nil = nil)
+  def initialize(@date = nil, description = nil, income : String = nil, expense : String = nil, @tag : String | Nil = nil)
     self.description = description
     self.income = income
     self.expense = expense
@@ -17,11 +17,11 @@ class StatementRecord
   end
 
   def income=(income)
-    @income = income.to_f rescue 0.0 # :( ugly but necessary to handle case where the value is ""
+    @income = income.blank? ? 0.0 : income.gsub(",", "").to_f # :( ugly but necessary to handle case where the value is ""
   end
 
   def expense=(expense)
-    @expense = expense.to_f rescue 0.0 # :( ugly but necessary to handle case where the value is ""
+    @expense = expense.blank? ? 0.0 : expense.gsub(",", "").to_f # :( ugly but necessary to handle case where the value is ""
   end
 
   def csv_meta
