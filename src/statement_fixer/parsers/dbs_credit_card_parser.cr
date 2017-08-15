@@ -3,6 +3,10 @@ require "./csv_parser"
 class DBSCreditCardParser < CSVParser
   register "dbs_credit_card", self
 
+  def seperator
+    '\t'
+  end
+
   def _parse_line(line)
     date = Time.parse(line[0], "%d %b %Y") rescue nil # %d-%b-%y
     return unless date
