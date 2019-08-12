@@ -18,7 +18,7 @@ class OCBCCreditCardParser < CSVParser
     elsif line[0].starts_with? "Supplementary"
       @tag = "supplementary"
     end
-    date = Time.parse(line[0], "%d/%m/%Y") rescue nil
+    date = Time.parse_utc(line[0], "%d/%m/%Y") rescue nil
     return unless date
     _write_to_statement date, line[1], line[3], line[2], @tag
   end

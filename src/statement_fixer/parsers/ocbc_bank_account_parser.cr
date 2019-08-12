@@ -10,7 +10,7 @@ class OCBCBankAccountParser < CSVParser
     elsif @state == :records
       if !line[0].to_s.strip.empty?
         _write_to_statement
-        @statement_record = StatementRecord.new(Time.parse(line[0], "%d/%m/%Y"), line[2], line[4], line[3])
+        @statement_record = StatementRecord.new(Time.parse_utc(line[0], "%d/%m/%Y"), line[2], line[4], line[3])
       elsif line[2] && (s = @statement_record)
         s.description = s.description.to_s + " " + line[2]
       end

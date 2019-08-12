@@ -8,7 +8,7 @@ class DBSCreditCardParser < CSVParser
   end
 
   def _parse_line(line)
-    date = Time.parse(line[0], "%d %b %Y") rescue nil # %d-%b-%y
+    date = Time.parse_utc(line[0], "%d %b %Y") rescue nil # %d-%b-%y
     return unless date
     income, expense = if line[2].ends_with? "cr"
                         [line[2][2..-3], "0"]

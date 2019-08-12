@@ -7,7 +7,7 @@ class POSBAccountParser < CSVParser
   # 27 Aug 2016 ICT   600 Anu Spending Cash Z073751608270739122994160827073912  OTHR
 
   def _parse_line(line)
-    date = Time.parse(line[0], "%d %b %Y") rescue nil
+    date = Time.parse_utc(line[0], "%d %b %Y") rescue nil
     return unless date
     income = line[3]
     expense = line[2]
